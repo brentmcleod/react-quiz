@@ -10,7 +10,7 @@ const quiz = {
   questions: [
     {
       id: 1,
-      type: "SINGLE_SELECT",
+      type: "SingleSelect",
       text: "What is Brent's favourite food?",
       randomiseAnswers: true,
       answers: [
@@ -30,7 +30,7 @@ const quiz = {
     },
     {
       id: 2,
-      type: "MULTI_SELECT",
+      type: "MultiSelect",
       text: "Which countries has Brent visited?",
       randomiseAnswers: false,
       answers: [
@@ -50,7 +50,7 @@ const quiz = {
     },
     {
       id: 3,
-      type: "ORDER_SELECT",
+      type: "OrderSelect",
       text: "Order Brent and his brothers from oldest (1) to youngest (3)",
       randomiseAnswers: false,
       answers: [

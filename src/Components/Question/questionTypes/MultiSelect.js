@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { addSelectedProps, shuffleAnswers } from "../utils/utils";
-import Answer from "./Answer";
+import { addSelectedProps, shuffleAnswers } from "../../../utils/utils";
+import Answer from "../Answer";
 
 const Question = ({ question, onAnswersSubmit }) => {
   const [numSelected, setNumSelected] = useState(0);
@@ -15,7 +15,6 @@ const Question = ({ question, onAnswersSubmit }) => {
   const handleAnswerClick = answerIndex => {
     let clickedAnswer = answers[answerIndex];
     if (clickedAnswer.selected === false) {
-      if (question.type === "SINGLE_SELECT" && numSelected === 1) return;
       setAnswers(
         answers.map((answer, index) =>
           answerIndex === index
@@ -57,14 +56,17 @@ const Question = ({ question, onAnswersSubmit }) => {
         <Answer
           key={index}
           index={index}
-          text={answer.text}
           type={question.type}
-          selected={answer.selected}
-          selectedOrder={answer.selectedOrder}
+          {...answer}
+          showAnswers={false}
           onClick={handleAnswerClick}
         />
       ))}
-      <button className="btn-action" onClick={() => onAnswersSubmit(answers)}>
+      <button
+        className="btn-action"
+        onClick={() => onAnswersSubmit(answers)}
+        disabled={!numSelected}
+      >
         Submit Answer
       </button>
     </>

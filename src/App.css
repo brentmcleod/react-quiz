@@ -22,19 +22,19 @@
   width: 75%;
   height: 75px;
   margin: 4px;
-  padding: 4px;
-  border-radius: 4px;
   color: #282c34;
+  border-radius: 4px;
+  line-height: 75px;
 }
 
 .answer-order {
   display: inherit;
   width: 75px;
-  margin: 0 4px;
+  height: inherit;
   background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
   align-items: center;
   justify-content: center;
+  line-height: 75px;
 }
 
 .answer-text {
@@ -45,7 +45,7 @@
 }
 
 .btn-action {
-  height: 75px;
+  height: 65px;
   margin: 24px 0 0 0;
   padding: 0 24px;
   display: flex;
@@ -54,4 +54,11 @@
   background-color: deepskyblue;
   border-radius: 4px;
   color: white;
+  line-height: 65px;
+}
+
+.btn-action:disabled {
+  background-color: darkgray;
+  color: lightgray;
+  cursor: default;
 }

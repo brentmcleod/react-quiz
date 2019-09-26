@@ -1,37 +1,52 @@
 import React, { useState } from "react";
-import Intro from "./Intro";
-import Question from "./Question";
-import Result from "./Result";
+import types from "./Question/questionTypes/_questionTypes";
+import Intro from "./Intro/Intro";
+import Question from "./Question/Question";
+import Result from "./Result/Result";
 
 const Quiz = ({ questions, ...props }) => {
   const [view, setView] = useState("intro");
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [quizResults, setQuizResults] = useState([]);
+  const [questionIndex, setQuestionIndex] = useState(0);
+  const [results, setResults] = useState([]);
+  const [transcript, setTranscript] = useState([]);
 
   const handleStartQuiz = () => {
     setView("questions");
   };
 
   const handleAnswersSubmit = answers => {
-    let suffix =
-      questions[currentQuestion].type === "ORDER_SELECT" ? "Order" : "";
+    let question = questions[questionIndex];
+    let suffix = question.type === types.ORDER_SELECT ? "Order" : "";
 
     let answerResult = answers.every(
       answer => answer["correct" + suffix] === answer["selected" + suffix]
     );
 
-    setQuizResults([...quizResults, answerResult]);
+    setResults([...results, answerResult]);
+    setTranscript([
+      ...transcript,
+      {
+        text: question.text,
+        type: question.type,
+        answers
+      }
+    ]);
 
-    if (currentQuestion + 1 < questions.length) {
-      setCurrentQuestion(currentQuestion + 1);
+    if (questionIndex < questions.length - 1) {
+      setQuestionIndex(questionIndex + 1);
     } else {
       setView("results");
     }
   };
 
-  const getScore = results => {
+  const getFinalResult = results => {
     let correctAnswers = results.filter(answer => answer === true).length;
-    return Math.floor((correctAnswers / results.length) * 100);
+    let score = Math.floor((correctAnswers / results.length) * 100);
+    let passQuiz = score > props.results.minScore;
+    let message = passQuiz
+      ? props.results.passMessage
+      : props.results.failMessage;
+    return { score, passQuiz, message };
   };
 
   return (
@@ -44,12 +59,16 @@ const Quiz = ({ questions, ...props }) => {
         />
       ) : view === "questions" ? (
         <Question
-          key={currentQuestion}
-          question={questions[currentQuestion]}
+          key={questionIndex}
+          question={questions[questionIndex]}
           onAnswersSubmit={handleAnswersSubmit}
         />
       ) : (
-        <Result score={getScore(quizResults)} restart={props.restar} />
+        <Result
+          restart={props.restart}
+          transcript={transcript}
+          {...getFinalResult(results)}
+        />
       )}
     </>
   );
