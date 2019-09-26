@@ -1,12 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// Listen to tab events to enable outlines (accessibility improvement)
+document.body.addEventListener("keyup", function(e) {
+  if (e.which === 9) {
+    /* tab */
+    document.documentElement.classList.remove("no-focus-outline");
+  }
+});
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// Attach React App to html root element
+ReactDOM.render(<App />, document.getElementById("root"));

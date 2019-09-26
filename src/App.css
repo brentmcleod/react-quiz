@@ -2,10 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -13,10 +9,49 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(24px + 2vmin);
   color: white;
 }
 
-.App-link {
-  color: #09d3ac;
+.question {
+  margin: 0 0 24px 0;
+}
+
+.answer {
+  display: flex;
+  width: 75%;
+  height: 75px;
+  margin: 4px;
+  padding: 4px;
+  border-radius: 4px;
+  color: #282c34;
+}
+
+.answer-order {
+  display: inherit;
+  width: 75px;
+  margin: 0 4px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
+}
+
+.answer-text {
+  display: inherit;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-action {
+  height: 75px;
+  margin: 24px 0 0 0;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: deepskyblue;
+  border-radius: 4px;
+  color: white;
 }
