@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import types from "./Question/questionTypes/_questionTypes";
+import { addStatusProp } from "../utils/utils";
 import Intro from "./Intro/Intro";
 import Question from "./Question/Question";
 import Result from "./Result/Result";
@@ -28,7 +29,8 @@ const Quiz = ({ questions, ...props }) => {
       {
         text: question.text,
         type: question.type,
-        answers
+        answeredCorrectly: answerResult,
+        answers: addStatusProp(answers, suffix)
       }
     ]);
 

@@ -8,3 +8,20 @@ export const shuffleAnswers = arr => {
   }
   return arr;
 };
+
+export const addStatusProp = (answers, suffix) => {
+  return answers.map(answer => {
+    let status =
+      answer["correct" + suffix] === answer["selected" + suffix] &&
+      answer.selected === true
+        ? "Selected Correctly"
+        : answer["correct" + suffix] !== answer["selected" + suffix] &&
+          answer.selected === true
+        ? "Incorrectly Selected"
+        : answer["correct" + suffix] !== answer["selected" + suffix] &&
+          answer.selected === false
+        ? "Correct Answer"
+        : "";
+    return { ...answer, status };
+  });
+};

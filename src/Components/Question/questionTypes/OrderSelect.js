@@ -52,7 +52,6 @@ const Question = ({ question, onAnswersSubmit }) => {
           index={index}
           type={question.type}
           {...answer}
-          showAnswers={false}
           onClick={handleAnswerClick}
         />
       ))}

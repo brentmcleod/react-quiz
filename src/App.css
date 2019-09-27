@@ -45,7 +45,7 @@
 }
 
 .btn-action {
-  height: 65px;
+  height: 75px;
   margin: 24px 0 0 0;
   padding: 0 24px;
   display: flex;
@@ -54,7 +54,7 @@
   background-color: deepskyblue;
   border-radius: 4px;
   color: white;
-  line-height: 65px;
+  line-height: 75px;
 }
 
 .btn-action:disabled {
