@@ -44,10 +44,8 @@ const Quiz = ({ questions, ...props }) => {
   const getFinalResult = results => {
     let correctAnswers = results.filter(answer => answer === true).length;
     let score = Math.floor((correctAnswers / results.length) * 100);
-    let passQuiz = score > props.results.minScore;
-    let message = passQuiz
-      ? props.results.passMessage
-      : props.results.failMessage;
+    let passQuiz = score > props.minScore;
+    let message = passQuiz ? props.passMessage : props.failMessage;
     return { score, passQuiz, message };
   };
 

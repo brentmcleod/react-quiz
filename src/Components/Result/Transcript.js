@@ -7,21 +7,23 @@ const Transcript = ({ transcript }) => {
       <h3>Transcript</h3>
       {transcript.map((question, index) => (
         <div key={index} className="transcript-question">
-          <span className="transcript-question-text">{question.text}</span>
-          <span
-            className="transcript-question-result"
-            style={
-              question.answeredCorrectly
-                ? { color: "lightgreen" }
-                : { color: "lightcoral" }
-            }
-          >
-            {question.answeredCorrectly ? "CORRECT" : "INCORRECT"}
-          </span>
+          <div className="transcript-question-text">{question.text}</div>
+          <div className="transcript-question-result">
+            Answer Result:{" "}
+            <span
+              style={
+                question.answeredCorrectly
+                  ? { color: "lightgreen" }
+                  : { color: "lightcoral" }
+              }
+            >
+              {question.answeredCorrectly ? "CORRECT" : "INCORRECT"}
+            </span>
+          </div>
           {question.answers.map((answer, index) => (
-            <div key={index} className="transcript-answer">
+            <div key={index} className="transcript-answer-wrapper">
               <span
-                className="transcript-answer-text"
+                className="transcript-answer"
                 style={
                   answer.status === "Selected Correctly"
                     ? { backgroundColor: "lightgreen" }
@@ -33,11 +35,15 @@ const Transcript = ({ transcript }) => {
                 }
               >
                 {question.type === types.ORDER_SELECT && (
-                  <span className="answer-order">{answer.selectedOrder}</span>
+                  <span className="transcript-order-left">
+                    {answer.selectedOrder}
+                  </span>
                 )}
-                {answer.text}
+                <span className="transcript-answer-text">{answer.text}</span>
                 {question.type === types.ORDER_SELECT && (
-                  <span className="answer-order">{answer.correctOrder}</span>
+                  <span className="transcript-order-right">
+                    {answer.correctOrder}
+                  </span>
                 )}
               </span>
               <span className="transcript-answer-status">{answer.status}</span>

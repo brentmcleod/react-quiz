@@ -7,14 +7,17 @@ const Answer = props => (
     onClick={() => props.onClick(props.index)}
     style={
       props.selected
-        ? { backgroundColor: "lightgreen" }
+        ? { backgroundColor: "deepskyblue" }
         : { backgroundColor: "lightgray" }
     }
   >
     {props.type === types.ORDER_SELECT && (
-      <span className="answer-order">{props.selectedOrder}</span>
+      <span className="answer-order-left">{props.selectedOrder}</span>
     )}
     <span className="answer-text">{props.text}</span>
+    {props.type === types.ORDER_SELECT && (
+      <span className="answer-order-right"></span>
+    )}
   </button>
 );
 

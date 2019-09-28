@@ -5,8 +5,8 @@ const Result = props => {
   return (
     <>
       <h2>Quiz Results</h2>
-      <p>Your score was {props.score}%</p>
       <p>{props.message}</p>
+      <p>Your score was {props.score}%</p>
       <button className="btn-action" onClick={props.restart}>
         {props.passQuiz ? "Restart Quiz" : "Try Again"}
       </button>

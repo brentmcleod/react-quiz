@@ -7,7 +7,7 @@ const App = () => {
   const [id, setId] = useState(1);
   const [quiz, loading] = useQuiz();
   return (
-    <div className="App App-header">
+    <div className="App App-wrapper">
       {loading ? (
         <span>Loading...</span>
       ) : (

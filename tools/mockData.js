@@ -2,11 +2,9 @@ const quiz = {
   id: 1,
   title: "A Quiz",
   introMessage: "This is a quiz",
-  results: {
-    minScore: 50,
-    passMessage: "Congratulations, you passed!",
-    failMessage: "You failed the quiz. Try again."
-  },
+  passMessage: "Congratulations, you passed!",
+  failMessage: "You failed the quiz.",
+  minScore: 50,
   questions: [
     {
       id: 1,
