@@ -17,3 +17,5 @@ Requires you to select all answers before you can submit. As you select each ans
 Data is loaded into the app on initalisation via a mock api which provides a JSON file.
 
 When the quiz is completed, the results of the quiz are displayed. If the user fails, then they are asked to try again. Otherwise a transcript of each answer is provided with a details about what answers were selected correctly or incorrectly.
+
+Enter "npm start" in a terminal to try the app.
